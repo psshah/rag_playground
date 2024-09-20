@@ -83,10 +83,12 @@ else:
         qa_pairs = generate_qa(factual_prompt, doc.text, temperature=0.2)
         dataset.extend(qa_pairs)
 
+    print("Fetched dataset: writing to file")
     # Write dataset to local file
     with open(dataset_file, 'w') as f:
         json.dump(dataset, f)
 
+    print("Completed writing dataset to file")
 
 # Note: we're choosing to create the dataset in Langfuse below, but it's equally easy to create it in another platform.
 
@@ -102,3 +104,5 @@ for item in dataset:
       input=item["question"],
       expected_output=item["expected_output"]
 )
+
+print("Completed writing dataset to langfuse")

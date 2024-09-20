@@ -25,5 +25,6 @@ query_engine = index.as_query_engine()
 
 # Example query
 response = query_engine.query("What years does the strategic plan cover?")
+langfuse_callback_handler.flush()
 
 print(response)
